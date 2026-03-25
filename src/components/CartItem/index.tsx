@@ -4,7 +4,7 @@ import styles from "./style";
 
 const CartItem = () => {
   return (
-    <View>
+    <View style={styles.itemContainer}>
       <View>
         <Image style={styles.cartImage} source={hamburguer} />
         <Text>Cheeseburger</Text>
