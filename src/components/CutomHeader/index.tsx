@@ -5,7 +5,11 @@ import React from "react";
 import { SafeAreaView, TouchableOpacity, View } from "react-native";
 import styles from "./style";
 
-const CustomHeader = () => {
+type PropsHeader = {
+  search?: boolean;
+};
+
+const CustomHeader = ({ search }: PropsHeader) => {
   return (
     <View>
       <SafeAreaView>
@@ -18,7 +22,13 @@ const CustomHeader = () => {
             <Ionicons name="arrow-back" size={24} color={colors.secondary} />
           </TouchableOpacity>
           <View style={{ flex: 1 }} />
-          <Ionicons name="search-outline" size={24} color={colors.secondary} />
+          {search && (
+            <Ionicons
+              name="search-outline"
+              size={24}
+              color={colors.secondary}
+            />
+          )}
         </View>
       </SafeAreaView>
     </View>

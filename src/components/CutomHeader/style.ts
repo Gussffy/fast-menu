@@ -1,4 +1,3 @@
-import { colors } from "@/src/styles/global";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
@@ -6,7 +5,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: colors.inputBackground,
+    backgroundColor: "transparent",
     height: 70,
     paddingHorizontal: 20,
     marginTop: 20,

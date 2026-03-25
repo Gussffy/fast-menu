@@ -17,7 +17,7 @@ const ProductCard = () => {
           />
         </View>
         <View style={styles.description}>
-          <Text>Cheeseburger</Text>
+          <Text>Cheeseburger teste</Text>
           <Text>Wendy&apos;s Burger</Text>
         </View>
       </TouchableOpacity>

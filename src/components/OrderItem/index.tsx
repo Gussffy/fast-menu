@@ -1,10 +1,9 @@
 import { router } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import hamburguer from "../../../assets/images/hamburguer.png";
-import Quantity from "../Quantity";
 import styles from "./style";
 
-const CartItem = () => {
+const OrderItem = () => {
   return (
     <View style={styles.itemContainer}>
       <View style={styles.imageContainer}>
@@ -17,11 +16,10 @@ const CartItem = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.descriptionContainer}>
-        <Text style={styles.price}>R$60.24</Text>
-        <Quantity />
+        <Text>Status do pedido</Text>
       </View>
     </View>
   );
 };
 
-export default CartItem;
+export default OrderItem;

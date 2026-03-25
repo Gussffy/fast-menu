@@ -1,9 +1,5 @@
-import { Text, View } from "react-native";
+import UserDatas from "@/src/components/UserDatas";
 
 export default function CartScreen() {
-  return (
-    <View>
-      <Text>Seu Perfil</Text>
-    </View>
-  );
+  return <UserDatas />;
 }
