@@ -1,11 +1,11 @@
-import {View, Text, TouchableOpacity, StyleSheet, Dimensions, ScrollView} from "react-native";
-import {LinearGradient} from 'expo-linear-gradient';
+import {View, Text, TouchableOpacity, StyleSheet, Dimensions} from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
 import {colors} from "@/src/styles/global";
 import {useState} from "react";
 import {router} from "expo-router";
 import Input from "@/src/components/Input";
 
-const {height} = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 export default function Register() {
     const [name, setName] = useState("");
@@ -19,50 +19,48 @@ export default function Register() {
     };
 
     return (
-        <ScrollView contentContainerStyle={{flexGrow: 1}}>
-            <LinearGradient
-                colors={['#FFF193', '#F71C1C']}
-                start={{x: 0, y: 0}}
-                end={{x: 1, y: 1}}
-                style={styles.container}
-            >
-                <View style={styles.topContainer}>
-                    <Text style={styles.title}>FastMenu</Text>
+        <LinearGradient
+            colors={['#FFF193', '#F71C1C']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={styles.container}
+        >
+            <View style={styles.topContainer}>
+                <Text style={styles.title}>FastMenu</Text>
+            </View>
+
+            <View style={styles.formContainer}>
+                <View style={styles.inputsWrapper}>
+                    <Input
+                        placeholder="Nome"
+                        value={name}
+                        onChangeText={setName}
+                    />
+                    <Input
+                        placeholder="CPF"
+                        value={cpf}
+                        onChangeText={setCpf}
+                        keyboardType="numeric"
+                    />
+                    <Input
+                        placeholder="Email"
+                        value={email}
+                        onChangeText={setEmail}
+                        keyboardType="email-address"
+                    />
+                    <Input
+                        placeholder="Mesa"
+                        value={table}
+                        onChangeText={setTable}
+                        keyboardType="numeric"
+                    />
                 </View>
 
-                <View style={styles.formContainer}>
-                    <View style={styles.inputsWrapper}>
-                        <Input
-                            placeholder="Nome"
-                            value={name}
-                            onChangeText={setName}
-                        />
-                        <Input
-                            placeholder="CPF"
-                            value={cpf}
-                            onChangeText={setCpf}
-                            keyboardType="numeric"
-                        />
-                        <Input
-                            placeholder="Email"
-                            value={email}
-                            onChangeText={setEmail}
-                            keyboardType="email-address"
-                        />
-                        <Input
-                            placeholder="Mesa"
-                            value={table}
-                            onChangeText={setTable}
-                            keyboardType="numeric"
-                        />
-                    </View>
-
-                    <TouchableOpacity style={styles.button} onPress={handleRegister}>
-                        <Text style={styles.buttonText}>Cadastrar</Text>
-                    </TouchableOpacity>
-                </View>
-            </LinearGradient>
-        </ScrollView>
+                <TouchableOpacity style={styles.button} onPress={handleRegister}>
+                    <Text style={styles.buttonText}>Cadastrar</Text>
+                </TouchableOpacity>
+            </View>
+        </LinearGradient>
     );
 }
 
@@ -83,7 +81,7 @@ const styles = StyleSheet.create({
         color: colors.light,
         textAlign: "center",
         textShadowColor: 'rgba(0, 0, 0, 0.3)',
-        textShadowOffset: {width: 2, height: 2},
+        textShadowOffset: { width: 2, height: 2 },
         textShadowRadius: 5,
         paddingBottom: 50,
     },

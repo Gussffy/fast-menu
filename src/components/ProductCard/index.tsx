@@ -1,31 +1,36 @@
 import { colors } from "@/src/styles/global";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
-import { Image, Text, View } from "react-native";
+import { router } from "expo-router";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
 
 const ProductCard = () => {
   return (
     <View style={styles.cardItem}>
-      <View style={styles.imageContainer}>
-        <Image
-          source={require("../../../assets/images/hamburguer.png")}
-          style={styles.image}
-        />
-      </View>
-      <View style={styles.description}>
-        <Text>Cheeseburger</Text>
-        <Text>Wendy&apos;s Burger</Text>
-      </View>
+      <TouchableOpacity onPress={() => router.push("/(tabs)/Home/productPage")}>
+        <View style={styles.imageContainer}>
+          <Image
+            source={require("../../../assets/images/hamburguer.png")}
+            style={styles.image}
+          />
+        </View>
+        <View style={styles.description}>
+          <Text>Cheeseburger</Text>
+          <Text>Wendy&apos;s Burger</Text>
+        </View>
+      </TouchableOpacity>
       <View style={styles.iconsContainer}>
         <View style={styles.scoreContainer}>
           <FontAwesome name="star" size={15} color="gold" />
-          4.5
+          <Text>4.5</Text>
         </View>
-        <Ionicons
-          name="bag-handle-outline"
-          size={25}
-          color={colors.secondary}
-        />
+        <TouchableOpacity onPress={() => router.push("/(tabs)/Cart/cart")}>
+          <Ionicons
+            name="bag-handle-outline"
+            size={25}
+            color={colors.secondary}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );
