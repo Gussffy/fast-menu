@@ -16,7 +16,7 @@ const CustomHeader = ({ search }: PropsHeader) => {
         <View style={styles.container}>
           <TouchableOpacity
             style={styles.iconButton}
-            onPress={() => router.push("/(tabs)/Home")}
+            onPress={() => router.back()}
             activeOpacity={0.6}
           >
             <Ionicons name="arrow-back" size={24} color={colors.secondary} />

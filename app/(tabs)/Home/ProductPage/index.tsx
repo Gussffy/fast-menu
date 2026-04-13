@@ -1,10 +1,18 @@
 import Product from "@/src/components/Product";
-import { View } from "react-native";
+import CustomHeader from "@/src/components/CutomHeader";
+import { ScrollView, View } from "react-native";
+import styles from "./styles";
 
 const ProductPage = () => {
   return (
-    <View>
-      <Product />
+    <View style={styles.container}>
+      <CustomHeader search />
+      <ScrollView
+        contentContainerStyle={styles.contentContainer}
+        showsVerticalScrollIndicator={false}
+      >
+        <Product />
+      </ScrollView>
     </View>
   );
 };

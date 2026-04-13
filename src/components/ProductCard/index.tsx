@@ -1,10 +1,29 @@
 import { colors } from "@/src/styles/global";
+import { useCart } from "@/src/context/CartContext";
+import { Product } from "@/src/data/products";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
 
-const ProductCard = () => {
+type ProductCardProps = {
+  product: Product;
+};
+
+const ProductCard = ({ product }: ProductCardProps) => {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: product.id,
+      title: product.title,
+      subtitle: product.subtitle,
+      price: product.price,
+      quantity: 1,
+    });
+    router.push("/(tabs)/Cart");
+  };
+
   return (
     <View style={styles.cardItem}>
       <TouchableOpacity
@@ -17,16 +36,16 @@ const ProductCard = () => {
           />
         </View>
         <View style={styles.description}>
-          <Text>Cheeseburger teste</Text>
-          <Text>Wendy&apos;s Burger</Text>
+          <Text style={styles.title}>{product.title}</Text>
+          <Text style={styles.subtitle}>{product.subtitle}</Text>
         </View>
       </TouchableOpacity>
       <View style={styles.iconsContainer}>
         <View style={styles.scoreContainer}>
           <FontAwesome name="star" size={15} color="gold" />
-          <Text>4.5</Text>
+          <Text>{product.rating.toFixed(1)}</Text>
         </View>
-        <TouchableOpacity onPress={() => router.push("/(tabs)/Cart")}>
+        <TouchableOpacity onPress={handleAddToCart}>
           <Ionicons
             name="bag-handle-outline"
             size={25}

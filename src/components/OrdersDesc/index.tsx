@@ -2,11 +2,16 @@ import { global } from "@/src/styles/global";
 import { Text, View } from "react-native";
 import styles from "./style";
 
-const OrdersDesc = () => {
+type OrdersDescProps = {
+  quantity?: number;
+  total?: string;
+};
+
+const OrdersDesc = ({ quantity = 0, total = "0,00" }: OrdersDescProps) => {
   return (
     <View style={[global.container, styles.descContainer]}>
-      <Text>Pedidos:4</Text>
-      <Text>Valor total: R$ 250,00</Text>
+      <Text style={styles.quantity}>{quantity} pedidos</Text>
+      <Text style={styles.total}>Valor total: R${total}</Text>
     </View>
   );
 };

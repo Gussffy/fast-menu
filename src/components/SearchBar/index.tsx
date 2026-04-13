@@ -4,11 +4,21 @@ import { TextInput, View } from "react-native";
 import { colors } from "../../styles/global";
 import { styles } from "./styles";
 
-const SearchBar = () => {
+type SearchBarProps = {
+  value: string;
+  onChangeText: (text: string) => void;
+};
+
+const SearchBar = ({ value, onChangeText }: SearchBarProps) => {
   return (
     <View style={styles.searchBar}>
       <Ionicons name="search" size={24} color={colors.secondary} />
-      <TextInput style={styles.input} placeholder="Search" />
+      <TextInput
+        style={styles.input}
+        placeholder="Pesquisar"
+        value={value}
+        onChangeText={onChangeText}
+      />
     </View>
   );
 };

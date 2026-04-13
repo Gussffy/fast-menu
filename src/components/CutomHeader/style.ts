@@ -6,9 +6,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     backgroundColor: "transparent",
-    height: 70,
+    height: 56,
     paddingHorizontal: 20,
-    marginTop: 20,
+    marginTop: 6,
   },
   iconButton: {
     width: 40,

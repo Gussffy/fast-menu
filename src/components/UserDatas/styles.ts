@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   topContainer: {
-    // flex: 0.3, // 30% do espaço para o título
     justifyContent: "flex-end",
     alignItems: "center",
     paddingHorizontal: 20,
@@ -23,14 +22,14 @@ const styles = StyleSheet.create({
     paddingBottom: 50,
   },
   formContainer: {
-    flex: 1, // 70% do espaço para o formulário
+    flex: 1,
     backgroundColor: colors.light,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 25,
     paddingTop: 30,
     paddingBottom: 30,
-    justifyContent: "space-between", // Espaça o conteúdo e o botão
+    justifyContent: "space-between",
     shadowColor: colors.dark,
     shadowOffset: {
       width: 0,

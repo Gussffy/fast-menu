@@ -7,9 +7,9 @@ export const styles = StyleSheet.create({
     backgroundColor: "transparent",
   },
   label: {
-    fontSize: 14,
-    color: colors.secondary,
-    marginBottom: 4,
+    fontSize: 34 / 2.2,
+    color: colors.textGray,
+    marginBottom: 6,
     fontWeight: "400",
   },
   priceContainer: {
@@ -17,8 +17,8 @@ export const styles = StyleSheet.create({
     alignItems: "baseline",
   },
   value: {
-    fontSize: 28,
+    fontSize: 55 / 2,
     fontWeight: "800",
-    color: colors.secondary,
+    color: colors.dark,
   },
 });

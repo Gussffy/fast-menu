@@ -1,23 +1,33 @@
 import CustomHeader from "@/src/components/CutomHeader";
 import OrderItem from "@/src/components/OrderItem";
 import OrdersDesc from "@/src/components/OrdersDesc";
-import { global } from "@/src/styles/global";
+import styles from "@/src/styles/ordersScreen";
 import React from "react";
 import { ScrollView, View } from "react-native";
 
+const orders = [
+  { id: "1", title: "Cheeseburger", subtitle: "Wendy's Burger" },
+  { id: "2", title: "Cheeseburger", subtitle: "Wendy's Burger" },
+  { id: "3", title: "Cheeseburger", subtitle: "Wendy's Burger" },
+];
+
 export default function Orders() {
   return (
-    <View>
-      <CustomHeader />
-      <OrdersDesc />
+    <View style={styles.container}>
+      <CustomHeader search />
+      <OrdersDesc quantity={orders.length} total="250,00" />
       <ScrollView
-        showsHorizontalScrollIndicator={false}
-        style={[global.container, { height: 630 }]}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.content}
       >
-        <OrderItem />
-        <OrderItem />
-        <OrderItem />
-        <OrderItem />
+        {orders.map((order) => (
+          <OrderItem
+            key={order.id}
+            title={order.title}
+            subtitle={order.subtitle}
+            status="received"
+          />
+        ))}
       </ScrollView>
     </View>
   );

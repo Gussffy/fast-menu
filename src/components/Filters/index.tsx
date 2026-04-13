@@ -1,29 +1,41 @@
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, TouchableOpacity } from "react-native";
+import { ProductCategory } from "@/src/data/products";
 
 import style from "./style";
 
-const Filter = () => {
+type FilterProps = {
+  options: ProductCategory[];
+  selectedOption: ProductCategory;
+  onSelectOption: (option: ProductCategory) => void;
+};
+
+const Filter = ({ options, selectedOption, onSelectOption }: FilterProps) => {
   return (
     <ScrollView
       style={style.filterContainer}
+      contentContainerStyle={style.filterContent}
       horizontal
       showsHorizontalScrollIndicator={false}
     >
-      <View style={style.filter}>
-        <Text style={style.filterText}>Todos</Text>
-      </View>
-      <View style={style.filter}>
-        <Text style={style.filterText}>Combos</Text>
-      </View>
-      <View style={style.filter}>
-        <Text style={style.filterText}>Bebidas</Text>
-      </View>
-      <View style={style.filter}>
-        <Text style={style.filterText}>Sobrimesas</Text>
-      </View>
-      <View style={style.filter}>
-        <Text style={style.filterText}>Acompanhamentos</Text>
-      </View>
+      {options.map((option) => {
+        const isSelected = option === selectedOption;
+
+        return (
+          <TouchableOpacity
+            key={option}
+            style={[style.filter, isSelected && style.filterSelected]}
+            onPress={() => onSelectOption(option)}
+            activeOpacity={0.8}
+          >
+            <Text
+              style={[style.filterText, isSelected && style.filterTextSelected]}
+              numberOfLines={1}
+            >
+              {option}
+            </Text>
+          </TouchableOpacity>
+        );
+      })}
     </ScrollView>
   );
 };

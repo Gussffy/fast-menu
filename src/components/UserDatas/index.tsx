@@ -8,7 +8,7 @@ import styles from "./styles";
 const UserDatas = () => {
   return (
     <LinearGradient
-      colors={["#FF2A9D", "#EF2A39"]}
+      colors={["#fcee91", "#EF2A39"]}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.container}

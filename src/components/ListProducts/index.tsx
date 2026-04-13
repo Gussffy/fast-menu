@@ -1,19 +1,24 @@
-import {View, ScrollView} from "react-native";
+import { Product } from "@/src/data/products";
+import { Text, View } from "react-native";
 import ProductCard from "../ProductCard";
-import {styles} from "./styles";
+import { styles } from "./styles";
 
-const ListProducts = () => {
-    return (
-        <View style={styles.listContainer}>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-        </View>
+type ListProductsProps = {
+  products: Product[];
+};
 
-    );
+const ListProducts = ({ products }: ListProductsProps) => {
+  if (!products.length) {
+    return <Text style={styles.emptyText}>Nenhum item encontrado.</Text>;
+  }
+
+  return (
+    <View style={styles.listContainer}>
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </View>
+  );
 };
 
 export default ListProducts;

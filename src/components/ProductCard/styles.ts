@@ -25,6 +25,13 @@ export const styles = StyleSheet.create({
   description: {
     marginBottom: 10,
   },
+  title: {
+    fontWeight: "600",
+    color: colors.secondary,
+  },
+  subtitle: {
+    color: colors.textGray,
+  },
   iconsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",

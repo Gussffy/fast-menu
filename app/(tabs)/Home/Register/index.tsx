@@ -11,6 +11,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
   const [table, setTable] = useState("");
+  const greetingName = name.trim() || "usuario";
 
   const handleRegister = () => {
     console.log({ name, email, cpf, table });
@@ -25,7 +26,7 @@ const Register = () => {
       style={styles.container}
     >
       <View style={styles.topContainer}>
-        <Text style={styles.title}>FastMenu</Text>
+        <Text style={styles.title}>Ola, {greetingName}</Text>
       </View>
 
       <View style={styles.formContainer}>
