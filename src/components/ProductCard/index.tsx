@@ -1,6 +1,6 @@
-import { colors } from "@/src/styles/global";
 import { useCart } from "@/src/context/CartContext";
 import { Product } from "@/src/data/products";
+import { colors } from "@/src/styles/global";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
@@ -27,7 +27,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <View style={styles.cardItem}>
       <TouchableOpacity
-        onPress={() => router.push("../(tabs)/Home/ProductPage")}
+        onPress={() =>
+          router.push({
+            pathname: "../(tabs)/Home/ProductPage",
+            params: { id: product.id },
+          })
+        }
       >
         <View style={styles.imageContainer}>
           <Image

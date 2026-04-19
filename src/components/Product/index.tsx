@@ -1,5 +1,6 @@
 import Quantity from "@/src/components/Quantity";
 import { useCart } from "@/src/context/CartContext";
+import { products } from "@/src/data/products";
 import { FontAwesome } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useState } from "react";
@@ -7,9 +8,15 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import hamburguer from "../../../assets/images/hamburguer.png";
 import styles from "./style";
 
-const Product = () => {
+type Props = {
+  id: string;
+};
+
+const Product = ({ id }: Props) => {
+  const product = products.find((product) => product.id === id);
+
   const { addToCart } = useCart();
-  const [quantity, setQuantity] = useState(2);
+  const [quantity, setQuantity] = useState(1);
 
   const handleIncrement = () => setQuantity((current) => current + 1);
   const handleDecrement = () =>
@@ -33,20 +40,15 @@ const Product = () => {
       </View>
 
       <View style={styles.infoContainer}>
-        <Text style={styles.title}>Cheeseburger Wendy&apos;s Burger</Text>
+        <Text style={styles.title}>{product?.title}</Text>
 
         <View style={styles.metaContainer}>
           <FontAwesome name="star" size={16} color="#f8a026" />
-          <Text style={styles.score}>4.9</Text>
+          <Text style={styles.score}>{product?.rating}</Text>
           <Text style={styles.time}>- 26 mins</Text>
         </View>
 
-        <Text style={styles.descriptionContainer}>
-          O Cheeseburger do Wendy&apos;s e um hamburguer classico de fast food que
-          oferece uma explosao de sabor em cada mordida. Feito com um suculento
-          hamburguer de carne bovina cozido a perfeicao, ele e coberto com queijo
-          americano derretido, alface crocante, tomate maduro e picles crocantes.
-        </Text>
+        <Text style={styles.descriptionContainer}>{product?.subtitle}</Text>
 
         <View style={styles.quantityContainer}>
           <Quantity
@@ -58,7 +60,7 @@ const Product = () => {
 
         <View style={styles.actionsContainer}>
           <View style={styles.priceContainer}>
-            <Text style={styles.price}>R$60,24</Text>
+            <Text style={styles.price}>{product?.price}</Text>
           </View>
 
           <TouchableOpacity

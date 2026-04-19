@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   cardItem: {
     width: "100%",
     height: "100%",
-    maxWidth: 158,
+    maxWidth: 178,
     maxHeight: 209,
     paddingHorizontal: 12,
     paddingVertical: 12,
