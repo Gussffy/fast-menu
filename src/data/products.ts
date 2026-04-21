@@ -1,4 +1,10 @@
 import aguamineral from "../../assets/images/aguamineral.png";
+import milkshake from "../../assets/images/milkshake.png";
+import coca from "../../assets/images/coca.png";
+import sundae from "../../assets/images/sundae.png";
+import sucolaranja from "../../assets/images/sucolaranja.png";
+import combo from "../../assets/images/combo.png";
+import fritasbatatas from "../../assets/images/fritasbatatas.png";
 import { ImageSourcePropType } from "react-native";
 
 type ProductCategory =
@@ -56,6 +62,7 @@ const products: Product[] = [
     rating: 4.6,
     price: 8.5,
     description: "Refrigerante clássico, gelado e refrescante.",
+    image: coca
   },
   {
     id: "4",
@@ -66,6 +73,7 @@ const products: Product[] = [
     price: 19.9,
     description:
       "Milkshake cremoso de chocolate com sabor intenso e textura suave.",
+    image: milkshake
   },
   {
     id: "5",
@@ -76,6 +84,7 @@ const products: Product[] = [
     price: 16,
     description:
       "Sorvete cremoso com cobertura de caramelo doce e irresistível.",
+    image: sundae
   },
   {
     id: "6",
@@ -85,6 +94,7 @@ const products: Product[] = [
     rating: 4.7,
     price: 18.9,
     description: "Batatas fritas crocantes por fora e macias por dentro.",
+    image: fritasbatatas
   },
   {
     id: "7",
@@ -95,6 +105,7 @@ const products: Product[] = [
     price: 65.9,
     description:
       "Delicioso hambúrguer com bacon crocante acompanhado de batata frita e bebida.",
+    image: combo
   },
   {
     id: "8",
@@ -113,6 +124,7 @@ const products: Product[] = [
     rating: 4.7,
     price: 12.0,
     description: "Suco natural de laranja, fresco e sem conservantes.",
+    image: sucolaranja
   },
   {
     id: "10",
