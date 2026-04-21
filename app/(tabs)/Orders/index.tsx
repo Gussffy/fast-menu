@@ -6,17 +6,14 @@ import styles from "@/src/styles/ordersScreen";
 import React from "react";
 import { ScrollView, View } from "react-native";
 
-const orders = [
-  { id: "1", title: "Cheeseburger", subtitle: "Wendy's Burger" },
-  { id: "2", title: "Cheeseburger", subtitle: "Wendy's Burger" },
-  { id: "3", title: "Cheeseburger", subtitle: "Wendy's Burger" },
-];
-
 export default function Orders() {
   const { orders, ordersCount } = useOrders();
 
   // Calcular total dos pedidos
-  const total = orders.reduce((sum, order) => sum + (order.price * order.quantity), 0);
+  const total = orders.reduce(
+    (sum, order) => sum + order.price * order.quantity,
+    0,
+  );
 
   return (
     <View style={styles.container}>

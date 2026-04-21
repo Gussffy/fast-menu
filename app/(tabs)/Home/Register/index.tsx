@@ -1,4 +1,5 @@
 import Input from "@/src/components/Input";
+import { useUser } from "@/src/context/UserContext";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import { useState } from "react";
@@ -7,6 +8,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 
 const Register = () => {
+  const { registerUser } = useUser();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
@@ -14,8 +16,15 @@ const Register = () => {
   const greetingName = name.trim() || "usuario";
 
   const handleRegister = () => {
-    console.log({ name, email, cpf, table });
-    router.push("../");
+    if (name.trim() && email.trim() && cpf.trim() && table.trim()) {
+      registerUser({
+        name: name.trim(),
+        email: email.trim(),
+        cpf: cpf.trim(),
+        table: table.trim(),
+      });
+      router.push("/(tabs)/Profile");
+    }
   };
 
   return (

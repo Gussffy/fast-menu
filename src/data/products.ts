@@ -89,8 +89,6 @@ const products: Product[] = [
     description: "Batatas fritas crocantes por fora e macias por dentro.",
     image: "",
   },
-
-  // NOVOS PRODUTOS - COMBOS
   {
     id: "7",
     title: "Combo X-Bacon",
@@ -112,8 +110,6 @@ const products: Product[] = [
     description: "Sanduíche de frango crocante com batata e bebida inclusa.",
     image: "",
   },
-
-  // NOVOS PRODUTOS - BEBIDAS
   {
     id: "9",
     title: "Suco Natural",
@@ -134,8 +130,6 @@ const products: Product[] = [
     description: "Água mineral pura e refrescante.",
     image: "",
   },
-
-  // NOVOS PRODUTOS - SOBREMESAS
   {
     id: "11",
     title: "Brownie",
@@ -157,8 +151,6 @@ const products: Product[] = [
     description: "Torta gelada de morango com creme leve e sabor marcante.",
     image: "",
   },
-
-  // NOVOS PRODUTOS - ACOMPANHAMENTOS
   {
     id: "13",
     title: "Onion Rings",

@@ -1,0 +1,48 @@
+import Input from "@/src/components/Input";
+import { useUser } from "@/src/context/UserContext";
+import { LinearGradient } from "expo-linear-gradient";
+import { Text, View } from "react-native";
+
+import CustomHeader from "../CutomHeader";
+import styles from "./styles";
+
+const UserDatas = () => {
+  const { userData } = useUser();
+
+  if (!userData) {
+    return null; // Este componente só deve ser usado quando há dados do usuário
+  }
+
+  return (
+    <LinearGradient
+      colors={["#fcee91", "#EF2A39"]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.container}
+    >
+      <CustomHeader />
+      <View style={styles.topContainer}>
+        <Text style={styles.title}>{userData.name}</Text>
+      </View>
+
+      <View style={styles.formContainer}>
+        <View style={styles.inputsWrapper}>
+          <Input placeholder="Nome" value={userData.name} />
+          <Input
+            placeholder="CPF"
+            value={userData.cpf}
+            keyboardType="numeric"
+          />
+          <Input
+            placeholder="Email"
+            value={userData.email}
+            keyboardType="email-address"
+          />
+          <Input placeholder="Mesa" value={userData.table} keyboardType="numeric" />
+        </View>
+      </View>
+    </LinearGradient>
+  );
+};
+
+export default UserDatas;

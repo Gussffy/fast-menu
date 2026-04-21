@@ -4,8 +4,9 @@ import PrimaryButton from "@/src/components/PrimaryButton";
 import TotalPrice from "@/src/components/TotalPrice";
 import { useCart } from "@/src/context/CartContext";
 import { useOrders } from "@/src/context/OrdersContext";
-import { formatCurrency } from "@/src/utils";
+import { useUser } from "@/src/context/UserContext";
 import { global } from "@/src/styles/global";
+import { formatCurrency } from "@/src/utils";
 import { router } from "expo-router";
 import { useMemo, useState } from "react";
 import { Text, View } from "react-native";
@@ -13,12 +14,24 @@ import { Text, View } from "react-native";
 export default function Checkout() {
   const { cartItemsCount, cartTotal, clearCart, cartItems } = useCart();
   const { createOrder } = useOrders();
-  const [selectedPayment, setSelectedPayment] = useState<"pix" | "dinheiro">("pix");
+  const { isUserRegistered } = useUser();
+  const [selectedPayment, setSelectedPayment] = useState<"pix" | "dinheiro">(
+    "pix",
+  );
 
-  const serviceFee = useMemo(() => (cartItemsCount > 0 ? 2 : 0), [cartItemsCount]);
+  const serviceFee = useMemo(
+    () => (cartItemsCount > 0 ? 2 : 0),
+    [cartItemsCount],
+  );
   const finalTotal = cartTotal + serviceFee;
 
   const handlePayNow = () => {
+    // Verificar se usuário está registrado
+    if (!isUserRegistered) {
+      router.push("/(tabs)/Home/Register");
+      return;
+    }
+
     // Criar pedido com os itens do carrinho
     createOrder({ items: cartItems });
     // Limpar carrinho
