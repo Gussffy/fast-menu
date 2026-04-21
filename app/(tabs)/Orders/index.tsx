@@ -29,6 +29,7 @@ export default function Orders() {
             title={order.title}
             subtitle={order.subtitle}
             status={order.status}
+            image={order.image}
           />
         ))}
       </ScrollView>

@@ -1,7 +1,7 @@
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { formatCurrency } from "@/src/utils";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View, type ImageSourcePropType } from "react-native";
 import { colors } from "@/src/styles/global";
 import hamburguer from "../../../assets/images/hamburguer.png";
 import Quantity from "../Quantity";
@@ -13,6 +13,7 @@ type CartItemProps = {
   subtitle?: string;
   price?: number;
   quantity?: number;
+  image?: ImageSourcePropType;
   onIncrement?: (id: string) => void;
   onDecrement?: (id: string) => void;
   onRemove?: (id: string) => void;
@@ -24,6 +25,7 @@ const CartItem = ({
   subtitle = "Wendy's Burger",
   price = 60.24,
   quantity = 1,
+  image,
   onIncrement,
   onDecrement,
   onRemove,
@@ -31,16 +33,22 @@ const CartItem = ({
   const handleIncrement = () => onIncrement?.(id);
   const handleDecrement = () => onDecrement?.(id);
   const handleRemove = () => onRemove?.(id);
+  const productImage = image ?? hamburguer;
 
   return (
     <View style={styles.itemContainer}>
       <TouchableOpacity
         style={styles.imageContainer}
-        onPress={() => router.push("/(tabs)/Home/ProductPage")}
+        onPress={() =>
+          router.push({
+            pathname: "/(tabs)/Home/ProductPage",
+            params: { id },
+          })
+        }
         activeOpacity={0.8}
       >
         <View>
-          <Image style={styles.cartImage} source={hamburguer} />
+          <Image style={styles.cartImage} source={productImage} resizeMode="contain" />
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.description}>{subtitle}</Text>
         </View>

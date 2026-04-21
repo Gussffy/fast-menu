@@ -24,12 +24,17 @@ const Product = ({ id }: Props) => {
     setQuantity((current) => (current > 1 ? current - 1 : 1));
 
   const handleOrderNow = () => {
+    if (!product) {
+      return;
+    }
+
     addToCart({
-      id: "1",
-      title: "Cheeseburger",
-      subtitle: "Wendy's Burger",
-      price: 60.24,
+      id: product.id,
+      title: product.title,
+      subtitle: product.subtitle,
+      price: product.price,
       quantity,
+      image: productImage,
     });
     router.push("/(tabs)/Cart");
   };

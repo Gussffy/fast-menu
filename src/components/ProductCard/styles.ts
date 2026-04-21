@@ -3,10 +3,8 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   cardItem: {
-    width: "100%",
-    height: "100%",
-    maxWidth: 178,
-    maxHeight: 209,
+    flex: 1,
+    minHeight: 209,
     paddingHorizontal: 12,
     paddingVertical: 12,
     backgroundColor: colors.light,

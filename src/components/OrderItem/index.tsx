@@ -1,5 +1,5 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import { Image, Text, View } from "react-native";
+import { Image, Text, View, type ImageSourcePropType } from "react-native";
 import hamburguer from "../../../assets/images/hamburguer.png";
 import styles from "./style";
 
@@ -9,6 +9,7 @@ type OrderItemProps = {
   title?: string;
   subtitle?: string;
   status?: OrderStatus;
+  image?: ImageSourcePropType;
 };
 
 const statusIndex: Record<OrderStatus, number> = {
@@ -27,14 +28,16 @@ const OrderItem = ({
   title = "Cheeseburger",
   subtitle = "Wendy's Burger",
   status = "ready",
+  image,
 }: OrderItemProps) => {
   const activeStep = statusIndex[status];
+  const productImage = image ?? hamburguer;
 
   return (
     <View style={styles.itemContainer}>
       <View style={styles.imageContainer}>
         <View>
-          <Image style={styles.cartImage} source={hamburguer} />
+          <Image style={styles.cartImage} source={productImage} resizeMode="contain" />
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.description}>{subtitle}</Text>
         </View>

@@ -12,20 +12,24 @@ const ListProducts = ({ products }: ListProductsProps) => {
     return <Text style={styles.emptyText}>Nenhum item encontrado.</Text>;
   }
 
+  const contentContainerStyle = { paddingBottom: 20, rowGap: 12 } as const;
+  const columnWrapperStyle = {
+    justifyContent: "space-between" as const,
+    columnGap: 12,
+  };
+
   return (
     <FlatList
       style={styles.listContainer}
-      data={products} // O array de dados
-      keyExtractor={(item) => item.id.toString()} // A chave única
-      renderItem={({ item }) => (
-        // O componente que será repetido
-        <ProductCard product={item} />
-      )}
+      data={products}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={({ item }) => <ProductCard product={item} />}
       numColumns={2}
-      columnWrapperStyle={{ gap: 20, justifyContent: "space-between" }}
+      columnWrapperStyle={columnWrapperStyle}
       scrollEnabled={true}
-      // Opcional: melhora a performance e evita que o conteúdo cole nas bordas
-      contentContainerStyle={{ paddingBottom: 20, rowGap: 20 }}
+      showsVerticalScrollIndicator={false}
+      persistentScrollbar={false}
+      contentContainerStyle={contentContainerStyle}
     />
   );
 };

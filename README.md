@@ -1,50 +1,112 @@
-# Welcome to your Expo app 👋
+# Fast Menu
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicativo mobile de cardapio e pedidos desenvolvido com Expo + React Native.
 
-## Get started
+O projeto simula um fluxo completo de fast-food:
+- listagem e filtro de produtos,
+- detalhes do item,
+- carrinho com checkout,
+- pagamento via Pix,
+- historico de pedidos,
+- dados de perfil.
 
-1. Install dependencies
+## Tecnologias utilizadas
 
-   ```bash
-   npm install
-   ```
+Principais tecnologias e bibliotecas:
+- `Expo` (SDK 54)
+- `React` 19
+- `React Native` 0.81
+- `Expo Router` (rotas baseadas em arquivos)
+- `TypeScript`
+- `Context API` (estado global de carrinho, pedidos e usuario)
+- `ESLint` (qualidade de codigo)
 
-2. Start the app
+Dependencias visuais relevantes:
+- `@expo/vector-icons`
+- `react-native-reanimated`
+- `react-native-gesture-handler`
 
-   ```bash
-   npx expo start
-   ```
+## Estrutura do projeto
 
-In the output, you'll find options to open the app in a
+Organizacao principal das pastas:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```text
+fast-menu/
+|- app/                         # Rotas e telas (Expo Router)
+|  |- _layout.tsx
+|  |- index.tsx
+|  `- (tabs)/
+|     |- Home/
+|     |- Cart/
+|     |- Orders/
+|     `- Profile/
+|- assets/
+|  |- icons/                    # Icones da navegacao e UI
+|  `- images/                   # Imagens de produtos e recursos visuais
+|- src/
+|  |- components/               # Componentes reutilizaveis
+|  |- context/                  # Providers e hooks globais
+|  |- data/                     # Dados estaticos (ex.: products)
+|  |- styles/                   # Estilos compartilhados
+|  `- utils.ts                  # Utilitarios gerais
+|- app.json
+|- package.json
+`- tsconfig.json
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Detalhe rapido de `src/`
 
-## Learn more
+- `src/components/`: UI modular (cards, botoes, inputs, listas, etc.)
+- `src/context/`: `CartContext`, `OrdersContext` e `UserContext`
+- `src/data/`: catalogo de produtos
+- `src/styles/`: tema global e estilos de tela
 
-To learn more about developing your project with Expo, look at the following resources:
+## Como executar o projeto
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 1) Instalar dependencias
 
-## Join the community
+```bash
+npm install
+```
 
-Join our community of developers creating universal apps.
+### 2) Rodar em modo desenvolvimento
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+npm run start
+```
+
+No terminal do Expo, voce pode abrir no:
+- Android
+- iOS
+- Web
+- Expo Go
+
+## Scripts disponiveis
+
+No `package.json`, os scripts principais sao:
+
+```bash
+npm run start
+npm run android
+npm run ios
+npm run web
+npm run lint
+```
+
+## Arquitetura (visao geral)
+
+- Rotas: definidas em `app/` com Expo Router.
+- Estado global: via Context API em `src/context/`.
+- Dados de produtos: centralizados em `src/data/products.ts`.
+- Componentizacao: telas montadas com componentes pequenos e reutilizaveis.
+
+## Boas praticas para contribuicao
+
+- Mantenha componentes reutilizaveis em `src/components/`.
+- Centralize novos dados em `src/data/`.
+- Evite logica de negocio espalhada entre telas; prefira `context`/helpers.
+- Rode o lint antes de abrir PR:
+
+```bash
+npm run lint
+```

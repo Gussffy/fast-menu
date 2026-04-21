@@ -22,6 +22,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       subtitle: product.subtitle,
       price: product.price,
       quantity: 1,
+      image: productImage,
     });
     router.push("/(tabs)/Cart");
   };

@@ -37,6 +37,7 @@ export default function CartScreen() {
               subtitle={item.subtitle}
               price={item.price}
               quantity={item.quantity}
+              image={item.image}
               onIncrement={incrementItem}
               onDecrement={decrementItem}
               onRemove={removeItem}

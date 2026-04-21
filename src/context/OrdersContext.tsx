@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
+import type { ImageSourcePropType } from "react-native";
 
 type OrderStatus = "received" | "preparing" | "ready";
 
@@ -8,18 +9,20 @@ type OrderItem = {
   subtitle: string;
   price: number;
   quantity: number;
+  image?: ImageSourcePropType;
   status: OrderStatus;
   orderDate: Date;
 };
 
 type CreateOrderPayload = {
-  items: Array<{
+  items: {
     id: string;
     title: string;
     subtitle: string;
     price: number;
     quantity: number;
-  }>;
+    image?: ImageSourcePropType;
+  }[];
 };
 
 type OrdersContextData = {
@@ -47,6 +50,7 @@ export const OrdersProvider = ({ children }: OrdersProviderProps) => {
       subtitle: item.subtitle,
       price: item.price,
       quantity: item.quantity,
+      image: item.image,
       status: "received",
       orderDate: new Date(),
     }));

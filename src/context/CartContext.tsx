@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useMemo, useState } from "react";
+import type { ImageSourcePropType } from "react-native";
 
 type CartItem = {
   id: string;
@@ -6,6 +7,7 @@ type CartItem = {
   subtitle: string;
   price: number;
   quantity: number;
+  image?: ImageSourcePropType;
 };
 
 type AddToCartPayload = {
@@ -14,6 +16,7 @@ type AddToCartPayload = {
   subtitle: string;
   price: number;
   quantity?: number;
+  image?: ImageSourcePropType;
 };
 
 type CartContextData = {
@@ -58,6 +61,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
           subtitle: payload.subtitle,
           price: payload.price,
           quantity: quantityToAdd,
+          image: payload.image,
         },
       ];
     });
