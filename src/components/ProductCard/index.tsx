@@ -3,7 +3,8 @@ import { Product } from "@/src/data/products";
 import { colors } from "@/src/styles/global";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View, type ImageSourcePropType } from "react-native";
+import hamburguer from "../../../assets/images/hamburguer.png";
 import { styles } from "./styles";
 
 type ProductCardProps = {
@@ -12,6 +13,7 @@ type ProductCardProps = {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart } = useCart();
+  const productImage = (product.image ?? hamburguer) as ImageSourcePropType;
 
   const handleAddToCart = () => {
     addToCart({
@@ -36,8 +38,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
       >
         <View style={styles.imageContainer}>
           <Image
-            source={require("../../../assets/images/hamburguer.png")}
+            source={productImage}
             style={styles.image}
+            resizeMode="contain"
           />
         </View>
         <View style={styles.description}>

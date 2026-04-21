@@ -14,6 +14,7 @@ type Props = {
 
 const Product = ({ id }: Props) => {
   const product = products.find((product) => product.id === id);
+  const productImage = product?.image ?? hamburguer;
 
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
@@ -36,7 +37,7 @@ const Product = ({ id }: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image style={styles.image} source={hamburguer} />
+        <Image style={styles.image} source={productImage} resizeMode="contain" />
       </View>
 
       <View style={styles.infoContainer}>
